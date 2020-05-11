@@ -114,7 +114,7 @@
         navigator
             .share(data)
             .then(() => console.log("Operation Successful"))
-            .then(() => console.log("Operation failed"))
+            .catch(() => console.log("Operation failed"))
     } else {
         console.log("Share API not supported!")
     }
@@ -124,7 +124,7 @@ document.getElementById('share-btn').addEventListener('click', share);
 </code></pre>
             <p id="result" class="hidden mt-1"></p>
         </section>
-        <button id="share-btn">Try Now</button>
+        <button id="share-btn">Try API Now</button>
         <script>
             function share() {
                 var data = {
