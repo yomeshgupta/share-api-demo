@@ -51,6 +51,7 @@
                 padding: 1em;
                 color: black;
                 border: 1px solid #000;
+                border-radius: 5px;
             }
             .hidden {
                 display: none;
@@ -96,7 +97,9 @@
             <!-- <hr class="mt-1" /> -->
             <p class="mt-1">
                 Web is more powerful than ever and it has came a long way! We can do many things which we could have never imagined before.
-                Web Share API went under the radar. It allows developers to add sharing functionality into websites  by taking advantage of the native content sharing capabilities on a user’s device.
+                Web Share API went under the radar. It allows developers to add sharing functionality into websites  by taking advantage of the native content sharing capabilities on a user’s device. Check out the code below to see how you integrate it in your product!
+
+                P.S. Looking to upskill? Would you like to test your domain knowledge? Move closer to your next job? Visit --  <a href="https://code.devtools.tech/?ref=nsad-dm" target="_blank" rel="noopener">https://code.devtools.tech/?ref=nsad-dm</a>
             </p>
             <pre class="mt-1"><code>var data = {
     title: 'Code by Devtools.tech',
@@ -112,7 +115,7 @@ if (navigator.share) {
 } else {
     console.log("Share API not supported!")
 }</code></pre>
-            <p id="result" class="hidden"></p>
+            <p id="result" class="hidden mt-1"></p>
         </section>
         <button id="share-btn">Share Now</button>
         <script>
@@ -120,8 +123,8 @@ if (navigator.share) {
                 var data = {
                     title: "Code by Devtools.tech",
                     text:
-                        "Ready to test your knowledge? Move closer to your dream job? Shared via browser native share capabilities!",
-                    url: "https://code.devtools.tech/?ref=nsad-m"
+                        "Ready to test your knowledge? Move closer to your dream job? Checkout https://code.devtools.tech/?ref=nsad-m | Shared via browser native share capabilities!",
+                    url: "https://web-share-api-demo.netlify.app/"
                 };
 
                 if (navigator && navigator.share) {
