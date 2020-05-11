@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Web Share API Demo
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+        <meta name="description" content="Web Share API allows developers to add sharing functionality into websites  by taking advantage of the native content sharing capabilities on a user’s device. Let us check it out!" />
+        <meta name="keywords" content="web share api, javascript, node.js, web, frontend, browser, native, react.js, code, devtools" />
+        <meta property="og:title" content="Web Share API Demo" />
+        <meta property="og:description" content="Web Share API allows developers to add sharing functionality into websites  by taking advantage of the native content sharing capabilities on a user’s device. Let us check it out!" />
+        <meta property="og:image" content="/navigator_share_api.jpg" />
+        <meta property="og:url" content="" />
+        <meta name="twitter:card" content='summary'></meta>
+        <meta property="og:site_name" content="Code by Devtools.tech"></meta>
+        <meta name="msapplication-TileColor" content="#f2f2f2;" />
+        <meta name="theme-color" content="#4141414"></meta>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+                font-size: 16px;
+                font-family: 'Source Code Pro', monospace;
+                box-sizing: border-box;
+            }
+            .mt-1 {
+                margin-top: 1em;
+            }
+            html,
+            body {
+                width: 100;
+                height: 100%;
+                background: #f2f2f2;
+            }
+            .wrapper {
+                width: 70%;
+                max-width: 500px;
+                margin: 0 auto;
+                margin-top: 30px;
+                padding: 1em;
+                background: #fff;
+                border-radius: 5px;
+                box-shadow:  15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
+                -webkit-box-shadow:  15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
+            }
+            .wrapper p {
+                color: #5a5a5a;
+            }
+            #result {
+                padding: 1em;
+                color: black;
+                border: 1px solid #000;
+            }
+            .hidden {
+                display: none;
+            }
+            #result.success {
+                color: #4BB543;
+                border-color: #4BB543;
+            }
+            #result.error {
+                color: rgb(238, 97, 97);
+                border-color: rgb(238, 97, 97);
+            }
+            pre {
+                padding: 0.8em;
+                border-radius: 5px;
+                background: #1e282d;
+                color: #fff;
+                word-wrap: break-word;
+                overflow: scroll;
+            }
+            #share-btn {
+                width: 100%;
+                padding: 1em;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                background-image: linear-gradient(to right, #0ba360, #3cba92, #30dd8a, #2bb673);
+                box-shadow: 0 4px 15px 0 rgba(23, 168, 108, 0.75);
+                color: #fff;
+                text-transform: uppercase;
+                font-weight: bold;
+            }
+            @media only screen and (max-width: 500px) {
+                .wrapper {
+                    width: 90%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <section class="wrapper">
+            <h1>Navigator Share API Demo</h1>
+            <!-- <hr class="mt-1" /> -->
+            <p class="mt-1">
+                Web is more powerful than ever and it has came a long way! We can do many things which we could have never imagined before.
+                Web Share API went under the radar. It allows developers to add sharing functionality into websites  by taking advantage of the native content sharing capabilities on a user’s device.
+            </p>
+            <pre class="mt-1"><code>var data = {
+    title: 'Code by Devtools.tech',
+    text: 'Ready to test your knowledge? Move closer to your dream job?',
+    url: 'https://code.devtools.tech'
+};
+
+if (navigator.share) {
+    navigator
+        .share(data)
+        .then(() => console.log("Operation Successful"))
+        .then(() => console.log("Operation failed"))
+} else {
+    console.log("Share API not supported!")
+}</code></pre>
+            <p id="result" class="hidden"></p>
+        </section>
+        <button id="share-btn">Share Now</button>
+        <script>
+            function share() {
+                var data = {
+                    title: "Code by Devtools.tech",
+                    text:
+                        "Ready to test your knowledge? Move closer to your dream job? Shared via browser native share capabilities!",
+                    url: "https://code.devtools.tech/?ref=nsad-m"
+                };
+
+                if (navigator && navigator.share) {
+                    navigator
+                        .share(data)
+                        .then(() => {
+                            result.classList.add('success');
+                            result.innerText = "Content sharing successful! 😄";
+                            result.classList.remove('hidden');
+                        })
+                        .catch(err => {
+                            result.classList.add('error');
+                            result.innerText = "Oops sharing failed! 🙁";
+                            result.classList.remove('hidden');
+                        });
+                } else {
+                    result.classList.add('error');
+                    result.innerText = "Looks like your browser doesn't support native content sharing! 🙅‍";
+                    result.classList.remove('hidden');
+                }
+            }
+
+            var button = document.getElementById("share-btn");
+            var result = document.getElementById("result");
+            button.addEventListener("click", share);
+        </script>
+    </body>
+</html>
