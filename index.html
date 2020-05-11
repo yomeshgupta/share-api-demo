@@ -38,7 +38,7 @@
                 max-width: 500px;
                 margin: 0 auto;
                 margin-top: 30px;
-                margin-bottom: 100px;
+                margin-bottom: 130px;
                 padding: 1em;
                 background: #fff;
                 border-radius: 5px;
@@ -103,23 +103,28 @@
             <p class="mt-1">
                 P.S. Looking to upskill? Would you like to test your domain knowledge? Move closer to your next job? Checkout <a href="https://code.devtools.tech/?ref=nsad-dm" target="_blank" rel="noopener">https://code.devtools.tech/?ref=nsad-dm</a>
             </p>
-            <pre class="mt-1"><code>var data = {
-    title: 'Code by Devtools.tech',
-    text: 'Ready to test your knowledge? Move closer to your dream job?',
-    url: 'https://code.devtools.tech'
-};
+            <pre class="mt-1"><code>function share() {
+    var data = {
+        title: 'Code by Devtools.tech',
+        text: 'Ready to test your knowledge? Move closer to your dream job?',
+        url: 'https://code.devtools.tech'
+    };
 
-if (navigator.share) {
-    navigator
-        .share(data)
-        .then(() => console.log("Operation Successful"))
-        .then(() => console.log("Operation failed"))
-} else {
-    console.log("Share API not supported!")
-}</code></pre>
+    if (navigator.share) {
+        navigator
+            .share(data)
+            .then(() => console.log("Operation Successful"))
+            .then(() => console.log("Operation failed"))
+    } else {
+        console.log("Share API not supported!")
+    }
+}
+
+document.getElementById('share-btn').addEventListener('click', share);
+</code></pre>
             <p id="result" class="hidden mt-1"></p>
         </section>
-        <button id="share-btn">Share Now</button>
+        <button id="share-btn">Try Now</button>
         <script>
             function share() {
                 var data = {
